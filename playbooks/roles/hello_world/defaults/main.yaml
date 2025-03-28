@@ -1,0 +1,6 @@
+---
+hello_world_config_paths_default: /etc/nginx/http.d/default.conf
+hello_world_config_paths_lookup:
+  Debian: /etc/nginx/sites-enabled/default.conf
+
+hello_world_config_path: "{{ hello_world_config_paths_lookup[ansible_os_family] | default(hello_world_config_paths_default) }}"

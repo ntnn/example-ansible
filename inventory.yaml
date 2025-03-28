@@ -1,0 +1,7 @@
+---
+vms:
+  vars:
+    ansible_connection: community.general.incus
+  hosts:
+    example-alpine: {}
+    example-debian: {}

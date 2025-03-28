@@ -1,0 +1,29 @@
+---
+- name: Install nginx
+  ansible.builtin.package:
+    name: nginx
+
+- name: Template nginx configuration
+  ansible.builtin.template:
+    src: nginx.conf.j2
+    dest: "{{ hello_world_config_path }}"
+    mode: "0644"
+  notify: Restart nginx
+
+- name: Create html root dir
+  ansible.builtin.file:
+    path: /usr/share/nginx/html
+    state: directory
+    mode: "0755"
+
+- name: Template index.html
+  ansible.builtin.template:
+    src: index.html.j2
+    dest: /usr/share/nginx/html/index.html
+    mode: "0644"
+
+- name: Start nginx
+  ansible.builtin.service:
+    name: nginx
+    state: started
+    enabled: true

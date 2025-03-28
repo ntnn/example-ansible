@@ -1,0 +1,9 @@
+---
+# This playbook doesn't do anything interesting. It just shows that it
+# is possible to run tasks in a playbook comparable to:
+#   ansible -m <module>
+- name: Ping
+  hosts: all
+  tasks:
+    - name: Ping
+      ansible.builtin.ping: {}
